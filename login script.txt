@@ -1,0 +1,38 @@
+Login Script
+
+-Session start method was called.
+-The database script was included
+
+-check was made to determine if the fields to be submitted contained values
+- $email was assigned the value of the name from the email input
+- $pass was assigned the value of the name from the password input
+
+-The input fields were checked. 
+If not empty fields:
+	- $query was assigned the SQL select query to get all database fields
+	  matched with the email and password provided.
+	- $stmt was assigned the prepare method with the $query as the parmater
+	  which was passed to the connected database ($con).
+	- The bind_param method containing the type of data passed and the $email
+	 and $pass was bounded to the $stmt;
+	- The execute function was bounded to the $stmt;
+	- get_result method was bounded to $stmt and was assigned to the variable
+	  $query_run.
+	- num_rows property was bounded to $query_run and was assigned to the variable $num.
+	- Check was done to know if there is the field in the database.
+	If the field is not found:
+	- Redirected to the message page with feedback of Record not found
+	If the field exist:
+	- Fetched the field using fetch_assoc method.
+	- Assigned a session id which grabbed the id from the database.
+	- Assigned a session email to the email from the database.
+	- Assigned a session pass to the password from the database.
+	- Then redirected to the dashboard page. 
+
+If empty fields:
+	- Redirected to the message page with feedback of You must fill all fields.
+	
+	
+MOTIVATIONS
+One of the scripts that gave me serious challenge when i was a beginner.
+Writing a code that gives a user login access and also displays the information from the database that particularly belongs to the said user was really challenging. I was happy when I finally got it and and with the knowledge and understanding i got i was able to implement a login system using PDO (PHP Data Objects).
